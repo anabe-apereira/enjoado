@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contato - ENJOADO</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f3f4f6;
+    padding-top:80px;
+    color:#1f2937;
+}
+
+/* MENU */
+.topo{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:80px;
+    background:#1f2937;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 30px;
+    z-index:1000;
+}
+
+.logo img{
+    height:55px;
+    display:block;
+}
+
+.menu{
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+.menu a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.menu a:hover{
+    color:#facc15;
+}
+
+/* CONTEÚDO */
+.contato-pagina{
+    max-width:1200px;
+    margin:0 auto;
+    padding:50px 30px 70px;
+}
+
+.topo-pagina{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:55px;
+}
+
+.topo-pagina h1{
+    font-size:38px;
+    color:#1f2937;
+}
+
+.breadcrumb{
+    font-size:15px;
+    color:#6b7280;
+}
+
+.breadcrumb a{
+    text-decoration:none;
+    color:#6b7280;
+}
+
+.breadcrumb a:hover{
+    color:#1f2937;
+}
+
+/* GRID */
+.contato-grid{
+    display:grid;
+    grid-template-columns:1fr 1.1fr;
+    gap:70px;
+    align-items:start;
+}
+
+/* ESQUERDA */
+.info-contato h2{
+    font-size:28px;
+    margin-bottom:28px;
+    color:#1f2937;
+}
+
+.info-contato ul{
+    list-style:none;
+}
+
+.info-contato li{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+    margin-bottom:22px;
+    font-size:19px;
+    line-height:1.6;
+    color:#374151;
+}
+
+.icone{
+    width:26px;
+    min-width:26px;
+    font-size:20px;
+    line-height:1.3;
+}
+
+/* DIREITA */
+.formulario-wrap p{
+    font-size:20px;
+    line-height:1.6;
+    color:#4b5563;
+    margin-bottom:28px;
+}
+
+.formulario{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.campo{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.campo input,
+.campo textarea{
+    width:100%;
+    border:1px solid #4b5563;
+    border-radius:10px;
+    background:#ffffff;
+    padding:16px 14px;
+    font-size:16px;
+    color:#1f2937;
+    outline:none;
+    transition:0.25s;
+}
+
+.campo input:focus,
+.campo textarea:focus{
+    border-color:#16a34a;
+    box-shadow:0 0 0 3px rgba(34,197,94,0.10);
+}
+
+.campo textarea{
+    min-height:140px;
+    resize:vertical;
+}
+
+.botao-area{
+    display:flex;
+    justify-content:flex-end;
+    margin-top:10px;
+}
+
+.botao-enviar{
+    background:linear-gradient(45deg,#22c55e,#16a34a);
+    color:white;
+    border:none;
+    border-radius:10px;
+    padding:15px 28px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+    box-shadow:0 10px 18px rgba(0,0,0,0.14);
+}
+
+.botao-enviar:hover{
+    transform:translateY(-2px);
+    box-shadow:0 14px 22px rgba(0,0,0,0.18);
+}
+
+.botao-enviar:disabled{
+    opacity:0.7;
+    cursor:not-allowed;
+    transform:none;
+}
+
+.mensagem-status{
+    display:none;
+    margin-top:16px;
+    padding:14px 16px;
+    border-radius:10px;
+    font-size:15px;
+    font-weight:bold;
+}
+
+.mensagem-status.sucesso{
+    display:block;
+    background:#dcfce7;
+    color:#166534;
+    border:1px solid #86efac;
+}
+
+.mensagem-status.erro{
+    display:block;
+    background:#fee2e2;
+    color:#991b1b;
+    border:1px solid #fca5a5;
+}
+
+/* RESPONSIVO */
+@media (max-width: 950px){
+    .contato-grid{
+        grid-template-columns:1fr;
+        gap:45px;
+    }
+
+    .topo-pagina{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:10px;
+    }
+}
+
+@media (max-width: 650px){
+    body{
+        padding-top:110px;
+    }
+
+    .topo{
+        height:auto;
+        padding:12px 15px;
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .menu{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:14px;
+    }
+
+    .contato-pagina{
+        padding:35px 18px 50px;
+    }
+
+    .topo-pagina h1{
+        font-size:30px;
+    }
+
+    .info-contato h2{
+        font-size:24px;
+    }
+
+    .info-contato li{
+        font-size:16px;
+    }
+
+    .formulario-wrap p{
+        font-size:17px;
+    }
+
+    .botao-area{
+        justify-content:stretch;
+    }
+
+    .botao-enviar{
+        width:100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topo">
+    <div class="logo">
+        <img src="img/logo.png" alt="Logo ENJOADO">
+    </div>
+
+    <nav class="menu">
+        <a href="index.html">Início</a>
+        <a href="colecao.html">Coleção</a>
+        <a href="quemsomos.html">Quem Somos</a>
+        <a href="contato.html">Contato</a>
+    </nav>
+</header>
+
+<main class="contato-pagina">
+
+    <div class="topo-pagina">
+        <h1>Contato</h1>
+        <div class="breadcrumb">
+            <a href="index.html">Home</a> / <span>Contato</span>
+        </div>
+    </div>
+
+    <section class="contato-grid">
+
+        <div class="info-contato">
+            <h2>Primeira Igreja Batista da Penha</h2>
+
+            <ul>
+                <li>
+                    <span class="icone">📍</span>
+                    <span>Rua Caquito, 222 - Penha, São Paulo - SP, 03607-000 - Brasil</span>
+                </li>
+
+                <li>
+                    <span class="icone">📞</span>
+                    <span>+55 (11) 99999999</span>
+                </li>
+
+                <li>
+                    <span class="icone">✉️</span>
+                    <span>teste@gmail.com</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="formulario-wrap">
+            <p>
+                Deixe aqui sua mensagem. Nossa equipe entrará em contato assim que possível!
+            </p>
+
+            <form class="formulario" id="form-contato">
+                <div class="campo">
+                    <input type="text" id="nome" name="nome" placeholder="Nome *" required>
+                </div>
+
+                <div class="campo">
+                    <input type="email" id="email" name="email" placeholder="E-mail *" required>
+                </div>
+
+                <div class="campo">
+                    <input type="text" id="telefone" name="telefone" placeholder="Telefone">
+                </div>
+
+                <div class="campo">
+                    <input type="text" id="assunto" name="assunto" placeholder="Assunto *" required>
+                </div>
+
+                <div class="campo">
+                    <textarea id="mensagem" name="mensagem" placeholder="Mensagem *" required></textarea>
+                </div>
+
+                <div class="botao-area">
+                    <button type="submit" class="botao-enviar" id="btn-enviar">Enviar mensagem</button>
+                </div>
+
+                <div id="status-envio" class="mensagem-status"></div>
+            </form>
+        </div>
+
+    </section>
+
+</main>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+(function () {
+    emailjs.init({
+        publicKey: "SUA_PUBLIC_KEY"
+    });
+})();
+
+const form = document.getElementById("form-contato");
+const botao = document.getElementById("btn-enviar");
+const statusEnvio = document.getElementById("status-envio");
+
+form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    statusEnvio.className = "mensagem-status";
+    statusEnvio.style.display = "none";
+
+    botao.disabled = true;
+    botao.textContent = "Enviando...";
+
+    const dados = {
+        nome: document.getElementById("nome").value,
+        email: document.getElementById("email").value,
+        telefone: document.getElementById("telefone").value,
+        assunto: document.getElementById("assunto").value,
+        mensagem: document.getElementById("mensagem").value
+    };
+
+    emailjs.send("SEU_SERVICE_ID", "SEU_TEMPLATE_ID", dados)
+        .then(function () {
+            statusEnvio.textContent = "Mensagem enviada com sucesso!";
+            statusEnvio.className = "mensagem-status sucesso";
+            form.reset();
+        })
+        .catch(function () {
+            statusEnvio.textContent = "Não foi possível enviar agora. Tente novamente em instantes.";
+            statusEnvio.className = "mensagem-status erro";
+        })
+        .finally(function () {
+            botao.disabled = false;
+            botao.textContent = "Enviar mensagem";
+        });
+});
+</script>
+
+</body>
+</html>

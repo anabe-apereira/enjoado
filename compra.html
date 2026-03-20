@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comprar Produto - ENJOADO</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f4f6f8;
+    padding-top:80px;
+    color:#1f2937;
+}
+
+/* MENU */
+.topo{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:80px;
+    background:#1f2937;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 30px;
+    z-index:1000;
+}
+
+.logo img{
+    height:55px;
+    display:block;
+}
+
+.menu{
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+.menu a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.menu a:hover{
+    color:#facc15;
+}
+
+/* CONTAINER */
+.compra-container{
+    max-width:1200px;
+    margin:40px auto;
+    padding:0 20px;
+}
+
+.compra-box{
+    background:white;
+    border-radius:18px;
+    box-shadow:0 12px 30px rgba(0,0,0,0.10);
+    padding:35px;
+    display:flex;
+    gap:40px;
+    flex-wrap:wrap;
+    align-items:flex-start;
+}
+
+/* IMAGEM */
+.produto-imagem{
+    flex:1 1 380px;
+    text-align:center;
+}
+
+.produto-imagem img{
+    width:100%;
+    max-width:420px;
+    border-radius:16px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.12);
+    display:block;
+    margin:0 auto;
+}
+
+/* INFO */
+.produto-info{
+    flex:1 1 380px;
+}
+
+.produto-info h1{
+    font-size:38px;
+    margin-bottom:12px;
+}
+
+.preco{
+    font-size:30px;
+    color:#16a34a;
+    font-weight:bold;
+    margin-bottom:18px;
+}
+
+.descricao{
+    font-size:17px;
+    line-height:1.7;
+    margin-bottom:25px;
+    color:#4b5563;
+}
+
+.campo{
+    margin-bottom:20px;
+}
+
+.campo label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:bold;
+    font-size:15px;
+}
+
+.campo select,
+.campo input{
+    width:100%;
+    max-width:260px;
+    padding:12px 14px;
+    border:1px solid #d1d5db;
+    border-radius:10px;
+    font-size:16px;
+    outline:none;
+}
+
+.campo select:focus,
+.campo input:focus{
+    border-color:#16a34a;
+}
+
+.total-box{
+    margin:25px 0;
+    padding:18px 20px;
+    background:#f9fafb;
+    border:1px solid #e5e7eb;
+    border-radius:12px;
+    max-width:320px;
+}
+
+.total-label{
+    font-size:15px;
+    color:#6b7280;
+    margin-bottom:5px;
+}
+
+.total-valor{
+    font-size:28px;
+    font-weight:bold;
+    color:#1f2937;
+}
+
+/* BOTÕES */
+.botoes{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-top:10px;
+}
+
+.botao-comprar{
+    display:inline-block;
+    background:linear-gradient(45deg,#22c55e,#16a34a);
+    color:white;
+    border:none;
+    padding:15px 28px;
+    border-radius:12px;
+    font-size:17px;
+    font-weight:bold;
+    text-decoration:none;
+    cursor:pointer;
+    transition:0.3s;
+    box-shadow:0 10px 20px rgba(0,0,0,0.15);
+}
+
+.botao-comprar:hover{
+    transform:translateY(-3px);
+    box-shadow:0 14px 24px rgba(0,0,0,0.20);
+}
+
+.botao-voltar{
+    display:inline-block;
+    background:#e5e7eb;
+    color:#1f2937;
+    border:none;
+    padding:15px 28px;
+    border-radius:12px;
+    font-size:17px;
+    font-weight:bold;
+    text-decoration:none;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.botao-voltar:hover{
+    background:#d1d5db;
+}
+
+/* RESPONSIVO */
+@media (max-width: 900px){
+    .topo{
+        padding:0 20px;
+    }
+
+    .menu{
+        gap:18px;
+    }
+
+    .produto-info h1{
+        font-size:30px;
+    }
+
+    .preco{
+        font-size:26px;
+    }
+}
+
+@media (max-width: 650px){
+    .topo{
+        flex-direction:column;
+        justify-content:center;
+        gap:10px;
+        height:auto;
+        padding:12px 15px;
+    }
+
+    body{
+        padding-top:110px;
+    }
+
+    .menu{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:14px;
+    }
+
+    .compra-box{
+        padding:22px;
+    }
+
+    .campo select,
+    .campo input,
+    .total-box{
+        max-width:100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topo">
+    <div class="logo">
+        <img src="img/logo.png" alt="Logo ENJOADO">
+    </div>
+
+    <nav class="menu">
+        <a href="index.html">Início</a>
+        <a href="colecao.html">Coleção</a>
+        <a href="quemsomos.html">Quem Somos</a>
+        <a href="contato.html">Contato</a>
+    </nav>
+</header>
+
+<main class="compra-container">
+    <section class="compra-box">
+
+        <div class="produto-imagem">
+            <img id="imagemProduto" src="img/Colecao.png" alt="Produto ENJOADO">
+        </div>
+
+        <div class="produto-info">
+            <h1 id="nomeProduto">Camiseta ENJOADO</h1>
+
+            <div class="preco" id="precoProduto">R$ 49,90</div>
+
+            <p class="descricao" id="descricaoProduto">
+                Produto oficial do ENJOADO. Ideal para encontros, eventos, momentos especiais
+                e para representar o grupo com muito estilo.
+            </p>
+
+            <div class="campo">
+                <label for="tamanho">Tamanho</label>
+                <select id="tamanho">
+                    <option value="P">P</option>
+                    <option value="M" selected>M</option>
+                    <option value="G">G</option>
+                    <option value="GG">GG</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label for="quantidade">Quantidade</label>
+                <input type="number" id="quantidade" value="1" min="1">
+            </div>
+
+            <div class="total-box">
+                <div class="total-label">Total</div>
+                <div class="total-valor" id="totalValor">R$ 49,90</div>
+            </div>
+
+            <div class="botoes">
+                <button class="botao-comprar" onclick="finalizarCompra()">Finalizar compra</button>
+                <a class="botao-voltar" href="colecao.html">Voltar</a>
+            </div>
+        </div>
+
+    </section>
+</main>
+
+<script>
+let produtoAtual = {
+    nome: "Camiseta ENJOADO",
+    preco: 49.90,
+    imagem: "img/Colecao.png",
+    descricao: "Produto oficial do ENJOADO. Ideal para encontros, eventos, momentos especiais e para representar o grupo com muito estilo."
+};
+
+function formatarPreco(valor){
+    return valor.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+    });
+}
+
+function atualizarTotal(){
+    const qtd = parseInt(document.getElementById("quantidade").value) || 1;
+    const total = produtoAtual.preco * qtd;
+    document.getElementById("totalValor").textContent = formatarPreco(total);
+}
+
+function carregarProdutoPelaUrl(){
+    const params = new URLSearchParams(window.location.search);
+    const produto = params.get("produto");
+
+    if(produto === "moletom"){
+        produtoAtual = {
+            nome: "Moletom ENJOADO",
+            preco: 99.90,
+            imagem: "img/Colecao.png",
+            descricao: "Moletom oficial do ENJOADO, confortável e perfeito para dias mais frios."
+        };
+    }
+    else if(produto === "bone"){
+        produtoAtual = {
+            nome: "Boné ENJOADO",
+            preco: 39.90,
+            imagem: "img/Colecao.png",
+            descricao: "Boné oficial do ENJOADO, ideal para completar o visual com estilo."
+        };
+    }
+    else{
+        produtoAtual = {
+            nome: "Camiseta ENJOADO",
+            preco: 49.90,
+            imagem: "img/Colecao.png",
+            descricao: "Produto oficial do ENJOADO. Ideal para encontros, eventos, momentos especiais e para representar o grupo com muito estilo."
+        };
+    }
+
+    document.getElementById("nomeProduto").textContent = produtoAtual.nome;
+    document.getElementById("precoProduto").textContent = formatarPreco(produtoAtual.preco);
+    document.getElementById("descricaoProduto").textContent = produtoAtual.descricao;
+    document.getElementById("imagemProduto").src = produtoAtual.imagem;
+    document.getElementById("imagemProduto").alt = produtoAtual.nome;
+
+    atualizarTotal();
+}
+
+function finalizarCompra(){
+    const tamanho = document.getElementById("tamanho").value;
+    const quantidade = parseInt(document.getElementById("quantidade").value) || 1;
+    const total = produtoAtual.preco * quantidade;
+
+    const mensagem =
+        "Olá! Quero comprar um produto do ENJOADO.%0A%0A" +
+        "Produto: " + produtoAtual.nome + "%0A" +
+        "Tamanho: " + tamanho + "%0A" +
+        "Quantidade: " + quantidade + "%0A" +
+        "Total: " + formatarPreco(total);
+
+    window.open("https://wa.me/5511995903561?text=" + mensagem, "_blank");
+}
+
+document.getElementById("quantidade").addEventListener("input", atualizarTotal);
+
+carregarProdutoPelaUrl();
+</script>
+
+</body>
+</html>
